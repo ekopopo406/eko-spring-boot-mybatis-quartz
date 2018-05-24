@@ -1,0 +1,12 @@
+create table task_table(
+	id varchar(100) not null,
+    cronExpression varchar(50) not null,
+    isEffect varchar(2) not null,
+    isStart varchar(2) not null,
+    jobName varchar(100) not null,
+    jobGroupName varchar(100) not null,
+    classAbsName varchar(150) not null,
+	methodName varchar(100) not null,
+	jobDescription varchar(150) not null,
+	  PRIMARY KEY (id)
+)  
