@@ -17,11 +17,12 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
 import org.quartz.impl.matchers.GroupMatcher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.eko.constants.TaskConstants;
 import com.eko.task.domain.TaskDomain;
 import com.eko.task.service.TaskManageService;
+import com.eko.task.service.TaskRecordService;
 
 @Service("taskManageService")
 public class TaskManageServiceImpl implements TaskManageService{
@@ -29,6 +30,8 @@ public class TaskManageServiceImpl implements TaskManageService{
 	@Resource(name = "scheduler")
 	private Scheduler scheduler;
 
+	@Autowired
+	private TaskRecordService taskRecordService;
 	@Override
 	public void addTaskJob(TaskDomain taskDomain) {
 		try {
@@ -36,7 +39,7 @@ public class TaskManageServiceImpl implements TaskManageService{
 			TriggerKey trikey = TriggerKey.triggerKey(taskDomain.getJobName(), taskDomain.getJobGroupName());
 			CronTrigger trigger = (CronTrigger) scheduler.getTrigger(trikey);
 			if(trigger==null){
-				Class currentClass = TaskConstants.IS_CURRENT_JOB.equals(taskDomain.getIsStart())?TaskCurrentRunningFactory.class:TaskCurrentNotRunningFactory.class;
+				Class<TaskClassInvokeFactory> currentClass = TaskClassInvokeFactory.class;
 				JobDetail theJobDetial = JobBuilder.newJob(currentClass).withIdentity(taskDomain.getJobName(), taskDomain.getJobGroupName()).build();
 				theJobDetial.getJobDataMap().put("taskDomain", taskDomain);
 				CronScheduleBuilder schedBuilder = CronScheduleBuilder.cronSchedule(taskDomain.getCronExpression()) ;
@@ -47,7 +50,7 @@ public class TaskManageServiceImpl implements TaskManageService{
 				trigger = trigger.getTriggerBuilder().withIdentity(trikey).withSchedule(schedBuilder).build();
 				scheduler.rescheduleJob(trikey, trigger);
 			}
-			
+			//taskRecordService.createNewTask(taskDomain);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

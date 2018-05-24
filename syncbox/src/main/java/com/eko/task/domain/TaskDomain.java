@@ -4,13 +4,8 @@ import java.io.Serializable;
 
 public class TaskDomain implements Serializable{
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 2061975721442853581L;
-//	@Id
-//	@GeneratedValue(generator="system-uuid")
-//	@GenericGenerator(name="system-uuid",strategy="uuid") 
+ 
 	private String id;
     private String cronExpression;
     /**0 no effect,1 is effect*/
@@ -22,7 +17,14 @@ public class TaskDomain implements Serializable{
     private String classAbsName;
 	private String methodName;
 	private String jobDescription;
+	private String springBeanName;
 	
+	public String getSpringBeanName() {
+		return springBeanName;
+	}
+	public void setSpringBeanName(String springBeanName) {
+		this.springBeanName = springBeanName;
+	}
 	public String getJobDescription() {
 		return jobDescription;
 	}

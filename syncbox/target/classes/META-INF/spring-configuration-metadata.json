@@ -1,0 +1,57 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.eko.dynamicdb.OneDatasourceProperties",
+      "name": "spring.datasource.one",
+      "type": "com.eko.dynamicdb.OneDatasourceProperties"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.TwoDatasourceProperties",
+      "name": "spring.datasource.target",
+      "type": "com.eko.dynamicdb.TwoDatasourceProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.eko.dynamicdb.OneDatasourceProperties",
+      "name": "spring.datasource.one.driver-class-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.OneDatasourceProperties",
+      "name": "spring.datasource.one.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.OneDatasourceProperties",
+      "name": "spring.datasource.one.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.OneDatasourceProperties",
+      "name": "spring.datasource.one.username",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.TwoDatasourceProperties",
+      "name": "spring.datasource.target.driver-class-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.TwoDatasourceProperties",
+      "name": "spring.datasource.target.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.TwoDatasourceProperties",
+      "name": "spring.datasource.target.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.eko.dynamicdb.TwoDatasourceProperties",
+      "name": "spring.datasource.target.username",
+      "type": "java.lang.String"
+    }
+  ]
+}

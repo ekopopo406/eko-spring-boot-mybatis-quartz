@@ -11,13 +11,20 @@ public class TaskUtil {
 		Object object = null;
 		Class<TaskDomain> clazz = null;
 		try{
-//			if(Validator.isNotNull(SpringUtil.containBean(taskDomain.getTaskId()))){
-//				object = SpringUtil.getBean(taskDomain.getTaskId());
-//				clazz = (Class<TaskDomain>) object.getClass();
-//			}else{
+//			System.out.println(SpringUtil.getApplicationContext().getBeanDefinitionCount());
+//			for(String temp:SpringUtil.getApplicationContext().getBeanDefinitionNames()){
+//			System.out.println(temp);
+//			}
+//		 
+//			System.out.println("SpringUtil"+SpringUtil.containBean("scheduler"));
+			if(SpringUtil.containBean(taskDomain.getSpringBeanName())){
+				object = SpringUtil.getBean(taskDomain.getSpringBeanName());
+				clazz = (Class<TaskDomain>) object.getClass();
+				
+			}else{
 				clazz = (Class<TaskDomain>) Class.forName(taskDomain.getClassAbsName());
 				object = clazz.newInstance();
-			//}
+			}
 			 Method method = clazz.getDeclaredMethod(taskDomain.getMethodName());
 			 method.invoke(object);
 		}catch(Exception e){

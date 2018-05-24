@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eko.mapper.task.TaskMapper">
+
+	<insert id="insertNewTask" parameterType="taskDomain" >
+		INSERT INTO TASK_TABLE (
+		id,
+		cronExpression,
+		isEffect,
+		isStart,
+		jobName,
+		jobGroupName,
+		classAbsName,
+		methodName,
+		jobDescription
+		)
+		values(
+		#{id},
+		#{cronExpression},
+		#{isEffect},
+		#{isStart},
+		#{jobName},
+		#{jobGroupName},
+		#{classAbsName},
+		#{methodName},
+		#{jobDescription}
+		)
+	</insert>
+   </mapper>

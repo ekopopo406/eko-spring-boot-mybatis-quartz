@@ -7,7 +7,7 @@ import org.quartz.JobExecutionException;
 import com.eko.task.domain.TaskDomain;
 import com.eko.utils.TaskUtil;
 
-public class TaskCurrentRunningFactory implements Job{
+public class TaskClassInvokeFactory implements Job{
 
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
